@@ -1,0 +1,95 @@
+import java.util.HashMap;
+import java.util.ArrayList;
+
+public class Student {
+	public int id;
+	public String name;
+	public Integer age;
+	public Integer grade;
+	
+	public static int constantid = 1;
+	public static ArrayList<HashMap<String, Object>> allStudents = new ArrayList<HashMap<String, Object>>();
+	
+	
+	public Student(String name, Integer age, Integer grade) {
+		
+		if (!(name instanceof String)) {
+			throw new IllegalArgumentException("name isnt of type string");
+		}
+		if (!(age instanceof Integer)) {
+			throw new IllegalArgumentException("name isnt of type string");
+		}
+		if (age <= 0) {
+			throw new IllegalArgumentException("age must be greater than 0");
+		}
+		this.name = name;
+		this.age = age;
+		this.grade = grade;
+		
+		
+	}
+	
+	public static int addStudent(Student newStudentObj) {
+		newStudentObj.id = constantid;
+		HashMap<String, Object> newStudent = new HashMap<String, Object>();
+		newStudent.put("id", newStudentObj.id);
+		newStudent.put("name", newStudentObj.name);
+		newStudent.put("grade", newStudentObj.grade);
+		allStudents.add(newStudent);
+		constantid++;
+		return(newStudentObj.id);
+	}
+	
+	public static boolean validateStudent(int id) {
+		for (HashMap<String, Object> element : allStudents) {
+			Object studentIdObj = element.get("id");
+			int studentId = (int) studentIdObj;
+			if (studentId == id) {
+				System.out.println("student id:" + studentId);
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public static void updateStudent(int id, String name, int age, int grade) {
+		
+		for (HashMap<String, Object> element : allStudents) {
+			boolean isValidId = validateStudent(id);
+			if (isValidId) {
+				element.put("name", name);
+				element.put("age", age);
+				element.put("grade", grade);
+				System.out.println(element);
+				break;
+			} else {
+				throw new IllegalArgumentException("provided id not found");
+			}
+		}
+		}
+	
+	public static ArrayList<HashMap<String, Object>> viewStudents() {
+		return allStudents;
+	}
+	public static HashMap<String, Object> getStudent(int studentId) {
+		HashMap<String, Object> student = new HashMap<String, Object>();
+		for (HashMap<String, Object> element : allStudents) {
+			boolean isValidId = validateStudent(studentId);
+			Object studentIdObj = element.get("id");
+			int studentIdd = (int) studentIdObj;
+			System.out.println(studentIdd + " " + studentId);
+			
+			if (isValidId) {
+				student = element;
+			} else {
+				System.out.println("not possible");
+				
+			}
+			
+		}
+		return student;
+	}
+	
+	
+	}
+ 

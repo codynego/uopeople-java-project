@@ -1,0 +1,63 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		System.out.println("welcome t0 University Of The People");
+		String command = """
+				######################################################
+				#         Student Management System Menu             #
+				#                                                    #
+				# DashBoard                                          #
+				# - Add Student (enter 1)                            #
+				# - Update Student (enter 2)                         #
+				# - View Students (enter 3)                          #
+				# - Get specific Student info (enter 4)              #
+				#                                                    #
+				######################################################
+				""";
+
+		int userCommand = 0;
+		
+		Student s1 = new Student("nego", 24, 100);
+		Student s2 = new Student("nego", 24, 100);
+		Student.addStudent(s1);
+		Student.addStudent(s2);
+		Student.updateStudent(1, "nego", 67, 90);
+		do {
+			System.out.println(command);
+			System.out.println(">>> ");
+			try {
+				Scanner scan = new Scanner(System.in);
+				int getInput = scan.nextInt();
+				System.out.println(getInput);
+
+				
+				switch (getInput) {
+				case 1:
+					try {
+						Scanner addStudscan = new Scanner(System.in);
+						String addName = addStudscan.nextLine();
+						int addAge = addStudscan.nextInt();
+						int addGrade = addStudscan.nextInt();
+						
+						Student newStudent = new Student(addName, addAge, addGrade);
+						Student.addStudent(newStudent);
+						System.out.println("student added");
+					} catch (InputMismatchException e) {
+						System.out.println("invalid type");
+					}
+				}
+			} catch (InputMismatchException e) {
+				System.out.println("invalid type");
+			}
+
+		} while (userCommand != 0);
+		
+		
+	}
+
+}

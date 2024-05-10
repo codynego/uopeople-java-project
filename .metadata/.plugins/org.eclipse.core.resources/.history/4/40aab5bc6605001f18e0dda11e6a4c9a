@@ -1,0 +1,28 @@
+public class Student {
+	private int id;
+	private String name;
+	private Integer age;
+	private Integer grade;
+	
+	private int constantid = 1;
+	
+	
+	
+	public Student(String name, Integer age, Integer grade) {
+		this.id = constantid;
+		if (!(name instanceof String)) {
+			throw new IllegalArgumentException("name isnt of type string");
+		}
+		if (!(age instanceof Integer)) {
+			throw new IllegalArgumentException("name isnt of type string");
+		}
+		if (age <= 0) {
+			throw new IllegalArgumentException("age must be greater than 0");
+		}
+		this.name = name;
+		this.age = age;
+		this.grade = grade;
+		
+		constantid++;
+	}
+}

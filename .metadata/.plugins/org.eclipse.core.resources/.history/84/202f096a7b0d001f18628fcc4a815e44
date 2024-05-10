@@ -1,0 +1,26 @@
+package data_analysis_unit4;
+
+public class DataAnalysis {
+	
+	public static int averageStockPrice(int[] stockPrices) {
+		int arrayLenght = stockPrices.length;
+		int totalPrice = 0;
+		
+		for (int i = 0; i < arrayLenght; i++) {
+			totalPrice = totalPrice + stockPrices[i];
+		};
+		return (totalPrice / arrayLenght);
+	}
+	
+	public static int MaxStockPrice(int[] stockPrices) {
+		int arrayLenght = stockPrices.length;
+		int maxPrice = 0;
+		
+		for (int i = 0; i < arrayLenght; i++) {
+			if (stockPrices[i] > maxPrice) {
+				maxPrice = stockPrices[i];
+			}
+		};
+		return (maxPrice);
+	}
+}

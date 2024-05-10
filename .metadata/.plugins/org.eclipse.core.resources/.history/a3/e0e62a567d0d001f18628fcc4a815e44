@@ -1,0 +1,14 @@
+package data_analysis_unit4;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		int[] stocks = {1,2,3,4,5,2,2};
+		
+		int max = DataAnalysis.occurenceCount(stocks, 2);
+		System.out.println(max);
+	}
+
+}

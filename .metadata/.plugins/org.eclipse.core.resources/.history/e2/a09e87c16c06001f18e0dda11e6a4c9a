@@ -1,0 +1,20 @@
+
+public class Main {
+
+	public static void main(String[] args) {
+		System.out.println("hello");
+		Student s1 = new Student("nego", 24, 100);
+		Student s2 = new Student("nego", 24, 100);
+		Student.addStudent(s1);
+		Student.addStudent(s2);
+		Student.updateStudent(1, "nego", 20, 90);
+		System.out.println(Student.allStudents);
+	}
+	
+	public int addStudent(String name, int age, int grade) {
+		Student s1 = new Student(name, age, grade);
+		return(s1.id);
+	}
+	
+
+}

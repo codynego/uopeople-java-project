@@ -1,0 +1,31 @@
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		System.out.println("welcome t0 University Of The People");
+		String command = """
+				######################################################
+				# Choose from the command below to perform an action # \n#
+				#                                                    #
+				# DashBoard                                          #
+				# - Add Student (enter 1)                            #
+				# - Update Student (enter 2)                         #
+				# - View Students (enter 3)                          #
+				# - Get specific Student info (enter 4)              #
+				#                                                    #
+				######################################################
+				""";
+
+		System.out.println(command);
+		Student s1 = new Student("nego", 24, 100);
+		Student s2 = new Student("nego", 24, 100);
+		Student.addStudent(s1);
+		Student.addStudent(s2);
+		Student.updateStudent(1, "nego", 67, 90);
+		
+		System.out.println(Student.viewStudents());
+		System.out.println(Student.getStudent(1));
+	}
+
+}
