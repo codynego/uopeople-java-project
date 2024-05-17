@@ -2,6 +2,7 @@ package linkedlist;
 
 public class LinkedList<T> {
 	private Node<T> head;
+	private int size;
 	
 	
 	public boolean addNode(T data) {
@@ -18,20 +19,25 @@ public class LinkedList<T> {
 			newNode.next = null;
 			temp.next = newNode;
 		}
+		size++;
 		
 		return true;
+	}
+	
+	public int size() {
+		return size;
 	}
 	public void popNode() {
 		Node<T> temp = head;
 		if (temp.next == null) {
 			head = null;
-			System.out.print("its empty");
 			return;
 		}
 		while (temp.next.next != null) {
 			temp = temp.next;
 		}
 		temp.next = null;
+		size--;
 	}
 	public void printList() {
 		Node<T> temp;
